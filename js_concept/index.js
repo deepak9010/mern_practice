@@ -771,3 +771,9 @@ btn2.addEventListener("click", ()=>{
 })
 
 // roadsidecoder yt - you can done this above example using lodash library, button press debounce using lodash library
+
+
+
+/************************************************  async vs defer ******************************************************************** */
+// namste js -yt
+// Doc-  https://dev.to/fidalmathew/async-vs-defer-in-javascript-which-is-better-26gm
