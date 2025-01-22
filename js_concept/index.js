@@ -777,3 +777,23 @@ btn2.addEventListener("click", ()=>{
 /************************************************  async vs defer ******************************************************************** */
 // namste js -yt
 // Doc-  https://dev.to/fidalmathew/async-vs-defer-in-javascript-which-is-better-26gm
+
+
+
+
+
+/*********************************************** CORS ******************************************************************* */
+
+// yt-namastejs
+// Doc- https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
+// DOc- https://medium.com/@lfoster49203/javascript-cors-cross-origin-resource-sharing-troubleshooting-6c2767530efe
+
+
+
+
+/*********************************************** Polyfill ******************************************************************* */
+
+// yt-namastejs
+// yt-roadsidecoder
+// Doc- https://vivekmoradiya.medium.com/most-asked-polyfills-in-javascript-interviews-bad3ec868ead
+// Doc- https://dev.to/shubhamdutta2000/polyfills-for-javascript-a-full-overview-3f7m
