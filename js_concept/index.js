@@ -480,6 +480,7 @@ let multiply= function(x,y){
 let multiplyByTwo = multiply.bind(this,2);
 multiplyByTwo(7);
 
+// curry-implementation -roadsidecoder video 
 
 
 // Why is Currying useful in JavaScript?
