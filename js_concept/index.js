@@ -835,3 +835,61 @@ btn2.addEventListener("click", ()=>{
 // yt-roadsidecoder
 // Doc- https://vivekmoradiya.medium.com/most-asked-polyfills-in-javascript-interviews-bad3ec868ead
 // Doc- https://dev.to/shubhamdutta2000/polyfills-for-javascript-a-full-overview-3f7m
+
+// polyfill for map function
+//syntax-- array.map((num, index, array)=>{})
+Array.prototype.myMap = function (cb) {
+  let temp = [];
+  for (let i = 0; i < this.length; i++) {
+    temp.push(cb(this[i], i, this));
+  }
+
+  return temp;
+};
+
+const nums = [1, 2, 4, 5, 6, 4];
+
+const multiplyByThree = nums.myMap((num, i, arr)=> {
+  return num * 3;
+});
+
+console.log(multiplyByThree);
+
+// polyfill for filter function
+//syntax-- array.filter((num, index, array)=>{})
+Array.prototype.myFilter = function (cb) {
+  let temp = [];
+  for (let i = 0; i < this.length; i++) {
+     if (cb(this[i], i, this))  temp.push(this[i]);
+  }
+  return temp;
+};
+
+const nums = [1, 2, 4, 5, 6, 4];
+
+const moreThanTwo = nums.myFilter((num, i, arr)=> {
+  return num > 2;
+});
+
+console.log(moreThanTwo);
+
+// polyfill for reduce function
+//syntax-- arr.reduce((acc, curr, i, arr)={}, initialValue)
+Array.prototype.myReduce = function (cb, initialValue) {
+   var accumulator = initialValue
+    
+  for (let i = 0; i < this.length; i++) {
+       accumulator = accumulator ? cb(accumulator, this[i], i, this) : this[i];
+  }
+  return accumulator;
+};
+
+const nums = [1, 2, 3,4];
+
+const sum = nums.myReduce( (acc, curr, i, arr) =>{
+  return acc + curr;
+}, 0);
+
+console.log(sum);
+
+
