@@ -664,6 +664,32 @@ const debounce = function(func, delay){
  }
 const debouncedSearchData = debounce(getData, 2000);
 
+// below is the example of why we use this
+// const debounce = function(func, delay){
+//   let timer;
+//   return function(){
+//     let context = this,        // 👈 capturing the original 'this'
+//         args = arguments;      // 👈 capturing any arguments
+//     clearTimeout(timer);
+//     timer = setTimeout(() => {
+//       func.apply(context, args);  // 👈 using 'apply' to call func with original context and args
+//     }, delay);
+//   }
+// }
+
+// const obj = {
+//   value: 42,
+//   printValue() {
+//     console.log(this.value);
+//   }
+// };
+
+// const debouncedPrint = debounce(obj.printValue, 1000);
+// debouncedPrint(); // ❌ this.value is undefined if 'this' is not preserved
+
+// If you don't preserve this, the function loses its context and this.value becomes undefined.
+
+
 
 //   another example for debouncing- Button
 //   ques-1 - Create a button Ui and add debounce as follows->
