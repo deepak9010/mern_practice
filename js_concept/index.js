@@ -687,6 +687,17 @@ const debouncedSearchData = debounce(getData, 2000);
 // const debouncedPrint = debounce(obj.printValue, 1000);
 // debouncedPrint(); // ❌ this.value is undefined if 'this' is not preserved
 
+// so make this reserver we need to bind the context
+// like below option1
+// const debouncedPrint = debounce(obj.printValue, 1000);
+// // Bind the correct context so 'this' refers to 'obj'
+// const boundDebouncedPrint = debouncedPrint.bind(obj);
+// // Call it
+// boundDebouncedPrint();
+
+// or likne bwlo option2
+// const debouncedPrint = debounce(obj.printValue.bind(obj), 1000);
+// debouncedPrint();
 // If you don't preserve this, the function loses its context and this.value becomes undefined.
 
 
