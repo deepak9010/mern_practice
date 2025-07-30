@@ -739,6 +739,35 @@ btn.addEventListener("click", ()=>{
 // roadsidecoder yt - you can done this above example using lodash library, button press debounce using lodash library
 
 
+// Debouncing example for search bar
+const input = document.querySelector(".search_input");
+const inputPress = document.querySelector(".input_pressed");
+const searchCount = document.querySelector(".search_count");
+
+let inputPressedCount = 0;
+let debouncedTriggerCount = 0;
+
+const myDebounce = (cb, delay) => {
+  let timer;
+  return (...args) => {
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      cb(...args);
+    }, delay);
+  };
+};
+
+const debouncedSearch = myDebounce(() => {
+  debouncedTriggerCount += 1;
+  searchCount.innerHTML = debouncedTriggerCount;
+  console.log("Debounced search triggered:", debouncedTriggerCount);
+}, 800);
+
+input.addEventListener("input", () => {
+  inputPress.innerHTML = ++inputPressedCount;
+  debouncedSearch();
+});
+
 
 
 
