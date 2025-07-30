@@ -69,8 +69,12 @@
 
     <!-- Debouncing -->
      <input type="text" onkeyup="getData()" />
-
      <input type="text" onkeyup="debouncedSearchData()" />
+
+    <!-- Debouncing on searchbar -->
+    <input type="text" class="search_input" placeholder="Search here..." />
+    <p>Input Count: <span class="input_pressed">0</span></p>
+    <p>Debounced Trigger Count: <span class="search_count">0</span></p>
      
    
    <!-- another example for debouncing- Button -->
