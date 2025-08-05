@@ -295,6 +295,30 @@ printMyName();
 
 
                               // map and reduce 
+// Map- > array.map(callback(currentValue, index, array), thisArg)
+// ✅ Arguments:
+// callback: Function to execute for each element.
+// currentValue: The current element.
+// index (optional): The index of the current element.
+// array (optional): The original array.
+// thisArg (optional): Value to use as this inside the callback.
+
+//  filter-> array.filter(callback(currentValue, index, array), thisArg)
+// ✅ Arguments:
+// callback: Function that returns true to keep the element.
+// Same 3 parameters as map(): currentValue, index, array.
+// thisArg (optional): Value to use as this.
+
+// reduce->  array.reduce(callback(accumulator, currentValue, index, array), initialValue)
+// ✅ Arguments:
+// callback: Function that reduces the array to a single value.
+// accumulator: The accumulated result from previous iterations.
+// currentValue: The current element.
+// index (optional): The index of the current element.
+// array (optional): The original array.
+// initialValue (optional but recommended): Initial value for the accumulator.
+
+
 
 // let arr =[1,2,3,5];
 // const ans = arr.map((previous, value)=>{
