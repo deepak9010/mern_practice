@@ -946,3 +946,103 @@ const sum = nums.myReduce( (acc, curr, i, arr) =>{
 console.log(sum);
 
 
+// -------------- Polyfill for call and apply and bind---------------------------------------
+function multiplyAge(multiplier = 1) {
+  return this.age * multiplier;
+}
+
+const mary = {
+  age: 21,
+};
+
+const john = {
+  age: 42,
+};
+
+// polyfill for call
+Function.prototype.myCall = function (context ={}, ...args) {
+    if(typeof this !== "function"){
+      throw new Error(this + "it is not callable")
+    }
+
+    context.fn = this;
+    const result = context.fn(...args);
+    return result;
+    // below code more perfect for edge cases
+     // Handle null / undefined
+    // context = context ?? globalThis;
+
+    // const fnSymbol = Symbol("fn");
+    // context[fnSymbol] = this;
+    // const result = context[fnSymbol](...args);
+
+    // delete context[fnSymbol];
+    // context.fn = this;
+    // return result;
+
+
+};
+
+// using prebuilt call
+console.log(multiplyAge.call(mary));    
+console.log(multiplyAge.call(john, 2)); 
+
+
+console.log(multiplyAge.myCall(mary));    
+console.log(multiplyAge.myCall(john, 2)); 
+
+
+
+// polyfill for apply
+
+Function.prototype.myApply = function (context ={}, argArray=[]) {
+    if(typeof this !== "function"){
+      throw new Error(this + "it is not callable")
+    }
+
+    if(!Array.isArray(argArray)){
+        throw new TypeError("CreateListFromArrayLike called on non-object")
+    }
+
+    context.fn = this;
+    const result = context.fn(...argArray);
+    return result;
+
+};
+
+console.log(multiplyAge.myCall(mary));    
+console.log(multiplyAge.myCall(john, [2])); 
+
+
+//// polyfill  for bind 
+Function.prototype.myBind = function (context ={}, ...args) {
+    if(typeof this !== "function"){
+      throw new Error(this + "it is not callable")
+    }
+  
+    context.fn = this;
+     return function (...newargs){
+        return context.fn(...args, ...newargs)
+     }
+
+}
+
+// // using prebuilt
+// const first = multiplyAge.bind(mary);
+// const second = multiplyAge.bind(john, 2)
+// const third = multiplyAge.bind(john);
+// console.log(first());    
+// console.log(second()); 
+// console.log(third(2)); 
+
+const fifth = multiplyAge.myBind(mary);
+const sixth = multiplyAge.myBind(john, 2)
+const seventh = multiplyAge.myBind(john);
+console.log(fifth());    
+console.log(sixth()); 
+console.log(seventh(2));
+
+
+
+
+
